@@ -74,8 +74,12 @@
    <field name="photo_owner" type="user_id" indexed="true" stored="true" required="true" />
    <field name="faved_by" type="user_id" indexed="true" stored="true" omitNorms="true" multiValued="true" />
 
+   <!-- TO DO: people tagging -->
+
    <field name="photo_perms" type="perms" indexed="true" stored="false" omitNorms="true" required="true" />
    <field name="geo_perms" type="perms" indexed="true" stored="false" omitNorms="true" />
+
+   <!-- TO DO: geo context and media -->
 
    <field name="continent" type="woeid" indexed="true" stored="false" />
    <field name="country" type="woeid" indexed="true" stored="false" />
