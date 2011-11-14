@@ -14,9 +14,9 @@
     <!-- The StrField type is not analyzed, but indexed/stored verbatim. -->
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
 
-    <fieldType name="tint" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="tlong" class="solr.TrieLongField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
-    <fieldType name="tdouble" class="solr.TrieDoubleField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="perms" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="accuracy" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="coord" class="solr.TrieDoubleField" precisionStep="6" omitNorms="true" positionIncrementGap="0"/>
 
     <!-- A Trie based date field for faster date range queries and date faceting. -->
     <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true" precisionStep="6" positionIncrementGap="0"/>
@@ -34,7 +34,9 @@
      -->
     <fieldType name="random" class="solr.RandomSortField" indexed="true" />
 
-    <fieldType name="woeid" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="photo_id" class="solr.TrieLongField" precisionStep="0" omitNorms="true" positionIncrementGap="0" />
+    <fieldType name="user_id" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0" />
+    <fieldType name="woeid" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0" />
 
     <!-- A general unstemmed text field - good if one does not know the language of the field -->
 
@@ -68,23 +70,26 @@
   </types>
 
   <fields>
-   <field name="photo_id" type="tlong" indexed="true" stored="true" required="true" /> 
-   <field name="photo_owner" type="tint" indexed="true" stored="true" omitNorms="true" />
-   <field name="faved_by" type="tint" indexed="true" stored="true" omitNorms="true" multiValued="true" />
+   <field name="photo_id" type="photo_id" indexed="true" stored="true" required="true" /> 
+   <field name="photo_owner" type="user_id" indexed="true" stored="true" required="true" />
+   <field name="faved_by" type="user_id" indexed="true" stored="true" omitNorms="true" multiValued="true" />
 
-   <field name="continent" type="woeid" indexed="true" stored="true" multiValued="false" />
-   <field name="country" type="woeid" indexed="true" stored="true" multiValued="false" />
-   <field name="region" type="woeid" indexed="true" stored="true" multiValued="false" />
-   <field name="county" type="woeid" indexed="true" stored="true" multiValued="false" />
-   <field name="locality" type="woeid" indexed="true" stored="true" multiValued="false" />
-   <field name="neighbourhood" type="woeid" indexed="true" stored="true" multiValued="false" />
+   <field name="photo_perms" type="perms" indexed="true" stored="true" omitNorms="true" required="true" />
+   <field name="geo_perms" type="perms" indexed="true" stored="true" omitNorms="true" />
 
-   <field name="timezone" type="text_path" indexed="false" stored="true" />
+   <field name="continent" type="woeid" indexed="true" stored="true" />
+   <field name="country" type="woeid" indexed="true" stored="true" />
+   <field name="region" type="woeid" indexed="true" stored="true" />
+   <field name="county" type="woeid" indexed="true" stored="true" />
+   <field name="locality" type="woeid" indexed="true" stored="true" />
+   <field name="neighbourhood" type="woeid" indexed="true" stored="true" />
+
+   <field name="timezone" type="text_path" indexed="true" stored="true" />
    <field name="place" type="text_path" indexed="true" stored="true" />
 
    <field name="location" type="location" indexed="true" stored="true"/>
-   <field name="accuracy" type="tint" indexed="true" stored="true" />
-   <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false"/>
+   <field name="accuracy" type="accuracy" indexed="true" stored="true" />
+   <dynamicField name="*_coordinate"  type="coord" indexed="true"  stored="false"/>
 
    <field name="tags" type="textgen" indexed="true" stored="true" multiValued="true" />
    <field name="machinetags" type="textgen" indexed="true" stored="true" multiValued="true" />
@@ -92,8 +97,10 @@
    <field name="date_taken" type="tdate" indexed="true" stored="true" />
    <field name="date_posted" type="tdate" indexed="true" stored="true" />
 
-   <field name="title" type="textgen" indexed="false" stored="true" />
-   <field name="description" type="textgen" indexed="false" stored="true" />
+   <field name="title" type="textgen" indexed="true" stored="true" />
+   <field name="description" type="textgen" indexed="true" stored="true" />
+
+   <field name="random" type="random" />
 
  </fields>
 
