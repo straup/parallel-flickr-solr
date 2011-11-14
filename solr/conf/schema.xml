@@ -74,15 +74,15 @@
    <field name="photo_owner" type="user_id" indexed="true" stored="true" required="true" />
    <field name="faved_by" type="user_id" indexed="true" stored="true" omitNorms="true" multiValued="true" />
 
-   <field name="photo_perms" type="perms" indexed="true" stored="true" omitNorms="true" required="true" />
-   <field name="geo_perms" type="perms" indexed="true" stored="true" omitNorms="true" />
+   <field name="photo_perms" type="perms" indexed="true" stored="false" omitNorms="true" required="true" />
+   <field name="geo_perms" type="perms" indexed="true" stored="false" omitNorms="true" />
 
-   <field name="continent" type="woeid" indexed="true" stored="true" />
-   <field name="country" type="woeid" indexed="true" stored="true" />
-   <field name="region" type="woeid" indexed="true" stored="true" />
-   <field name="county" type="woeid" indexed="true" stored="true" />
-   <field name="locality" type="woeid" indexed="true" stored="true" />
-   <field name="neighbourhood" type="woeid" indexed="true" stored="true" />
+   <field name="continent" type="woeid" indexed="true" stored="false" />
+   <field name="country" type="woeid" indexed="true" stored="false" />
+   <field name="region" type="woeid" indexed="true" stored="false" />
+   <field name="county" type="woeid" indexed="true" stored="false" />
+   <field name="locality" type="woeid" indexed="true" stored="false" />
+   <field name="neighbourhood" type="woeid" indexed="true" stored="false" />
 
    <field name="timezone" type="text_path" indexed="true" stored="true" />
    <field name="place" type="text_path" indexed="true" stored="true" />
@@ -91,14 +91,14 @@
    <field name="accuracy" type="accuracy" indexed="true" stored="true" />
    <dynamicField name="*_coordinate"  type="coord" indexed="true"  stored="false"/>
 
-   <field name="tags" type="textgen" indexed="true" stored="true" multiValued="true" />
-   <field name="machinetags" type="textgen" indexed="true" stored="true" multiValued="true" />
+   <field name="tags" type="textgen" indexed="true" stored="false" multiValued="true" />
+   <field name="machinetags" type="textgen" indexed="true" stored="false" multiValued="true" />
 
-   <field name="date_taken" type="tdate" indexed="true" stored="true" />
-   <field name="date_posted" type="tdate" indexed="true" stored="true" />
+   <field name="date_taken" type="tdate" indexed="true" stored="false" />
+   <field name="date_posted" type="tdate" indexed="true" stored="false" />
 
-   <field name="title" type="textgen" indexed="true" stored="true" />
-   <field name="description" type="textgen" indexed="true" stored="true" />
+   <field name="title" type="textgen" indexed="true" stored="false" />
+   <field name="description" type="textgen" indexed="true" stored="false" />
 
    <field name="random" type="random" />
 
