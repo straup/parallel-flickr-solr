@@ -17,6 +17,10 @@
     <fieldType name="tint" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
     <fieldType name="coord" class="solr.TrieDoubleField" precisionStep="6" omitNorms="true" positionIncrementGap="0"/>
 
+    <fieldType name="exif_int" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="exif_float" class="solr.TrieDoubleField" precisionStep="6" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="exif_string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
     <!-- A Trie based date field for faster date range queries and date faceting. -->
     <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true" precisionStep="6" positionIncrementGap="0"/>
 
@@ -99,15 +103,16 @@
    <field name="accuracy" type="tint" indexed="true" stored="false" />
 
    <!-- exif data -->
-   <field name="altitude" type="coord" indexed="true" stored="true" />
-   <field name="direction" type="coord" indexed="true" stored="true" />
-
-   <!-- hello, camera finder -->
-   <field name="camera_make" type="textgen" indexed="true" stored="true" />
-   <field name="camera_model" type="textgen" indexed="true" stored="true" />
-
-   <!-- other stuff like focal length go here... -->
    <!-- see also, git:parallel-flickr/www/include/lib_flickr_photos_search.php -->
+
+   <field name="altitude" type="exif_float" indexed="true" stored="true" />
+   <field name="direction" type="exif_float" indexed="true" stored="true" />
+   <field name="focal_length" type="exif_float" indexed="true" stored="true" />
+   <field name="apeture" type="exif_float" indexed="true" stored="true" />
+   <field name="shutter_speed" type="exif_float" indexed="true" stored="true" />
+   <field name="iso_speed" type="exif_int" indexed="true" stored="true" />
+   <field name="camera_make" type="exif_string" indexed="true" stored="true" />
+   <field name="camera_model" type="exif_string" indexed="true" stored="true" />
 
    <!-- raw tags -->
    <field name="tags" type="textgen" indexed="true" stored="true" multiValued="true" />

@@ -95,7 +95,7 @@
        replication is in use, this should match the replication
        configuration.
     -->
-  <dataDir>${solr.data.dir:}</dataDir>
+  <dataDir>${solr.solr.cores}/parallel-flickr/data</dataDir>
 
 
   <!-- The DirectoryFactory to use for indexes.
