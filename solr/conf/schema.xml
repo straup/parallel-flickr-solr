@@ -94,8 +94,20 @@
    <field name="place" type="text_path" indexed="true" stored="true" />
 
    <field name="location" type="location" indexed="true" stored="false"/>
-   <field name="accuracy" type="accuracy" indexed="true" stored="false" />
    <dynamicField name="*_coordinate"  type="coord" indexed="true"  stored="false"/>
+
+   <field name="accuracy" type="tint" indexed="true" stored="false" />
+
+   <!-- exif data -->
+   <field name="altitude" type="coord" indexed="true" stored="true" />
+   <field name="direction" type="coord" indexed="true" stored="true" />
+
+   <!-- hello, camera finder -->
+   <field name="camera_make" type="textgen" indexed="true" stored="true" />
+   <field name="camera_model" type="textgen" indexed="true" stored="true" />
+
+   <!-- other stuff like focal length go here... -->
+   <!-- see also, git:parallel-flickr/www/include/lib_flickr_photos_search.php -->
 
    <!-- raw tags -->
    <field name="tags" type="textgen" indexed="true" stored="true" multiValued="true" />
