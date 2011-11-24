@@ -124,10 +124,12 @@
 
    <!-- raw tags -->
    <field name="tags" type="textgen" indexed="true" stored="true" multiValued="true" />
+
+   <!-- this is probably not the correct field type for machine tags (20111124/straup) -->
    <field name="machinetags" type="textgen" indexed="true" stored="false" multiValued="true" />
 
-   <field name="date_taken" type="tdate" indexed="true" stored="false" />
-   <field name="date_posted" type="tdate" indexed="true" stored="false" />
+   <field name="datetaken" type="tdate" indexed="true" stored="false" />
+   <field name="dateupload" type="tdate" indexed="true" stored="false" />
 
    <field name="title" type="textgen" indexed="true" stored="false" />
    <field name="description" type="textgen" indexed="true" stored="false" />
