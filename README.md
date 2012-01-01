@@ -1,19 +1,6 @@
 parallel-flickr-solr
 ==
 
-Add search to parallel-flickr using Solr (3.4 or higher).
+**This repository is deprecated** and will no longer be maintained.
 
-**This works but needs documentation** (read: you'll need to be familiar with Solr if you want to do anything in the meantime.
-
-To do:
---
-
-* A pretty fierce stop word list for indexing
-
-See also:
---
-
-* [Solr](https://lucene.apache.org/solr/)
-
-* [parallel-flickr](https://github.com/straup/parallel-flickr)
-
+All the Solr bits for parallel-flickr have been [moved in to parallel-flickr](https://github.com/straup/parallel-flickr/tree/master/solr) itself.
